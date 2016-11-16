@@ -1,0 +1,44 @@
+
+<div class="cartContainer">
+<h1>Shopping Cart</h1>
+
+
+<nav class="topCart">
+	<h5>Name</h5>
+	<div class="topCartLeft">
+		<p><h5>Item Price</h5></p>
+		<p><h5>Quantity</h5></p>
+		<p><h5>Item Total</h5></p>
+	</div>
+
+</nav>
+
+<div class="items">
+	
+	<div class="item" ng-repeat="item in cart">
+		<div class="cartName">
+			<p>{{item.name}}</p>
+			<img src="../images/{{item.imageurl}}" class="imageCart">
+		</div>
+		
+		<p>${{item.price}}</p>
+		<p>{{item.quantity}}</p>
+		<div>
+			<button class="quantityButton" ng-click="addOne(item)">+</button>
+			<button class="quantityButton" ng-click="takeOne(item)">-</button>
+		</div>
+		<p>${{item.price*item.quantity}}</p>
+		
+	</div>
+
+<div class="priceInfo">
+	<h5>Subtotal ${{subTotal}}</h5>
+	<h5>Tax  ${{tax}}</h5>
+	<h5>Shipping  ${{shipping}}</h5>
+	<h3>Total  ${{total}} </h3>
+</div>
+
+	<button ui-sref="checkout">Checkout</button>
+	
+</div>
+</div>

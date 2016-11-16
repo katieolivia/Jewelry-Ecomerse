@@ -1,0 +1,20 @@
+<div class="containerProducts">
+<h1>Headbands</h1>
+
+<div class="productBoxes">
+
+<div class="productBox" ng-repeat="headband in headbands">
+	<h3>{{headband.name}}</h3>
+	<img src="../images/{{headband.imageurl}}" class = "imageProductPage">
+	<p>Price: ${{headband.price}}</p>
+
+	<button ng-click="addToCart(headband)">Buy</button>
+	
+
+</div>
+
+</div>
+
+
+
+</div>

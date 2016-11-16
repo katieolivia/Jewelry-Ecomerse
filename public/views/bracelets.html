@@ -1,0 +1,20 @@
+<div class="containerProducts">
+<h1>Bracelets</h1>
+
+<div class="productBoxes">
+
+<div class="productBox" ng-repeat="bracelet in bracelets">
+	<h2>{{bracelet.name}}</h2>
+	<img src="../images/{{bracelet.imageurl}}" class = "imageProductPage">
+	<p>Price: ${{bracelet.price}}</p>
+
+	<button ng-click="addToCart(bracelet)">Buy</button>
+	
+
+</div>
+
+</div>
+
+
+
+</div>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="jewelry" lang="en">
+<head>
+  	<link rel='stylesheet' href='./css/style.css' type='text/css'>
+
+	<title>Jewelry</title>
+</head>
+<body ng-controller="mainCtrl">
+	<header>
+		<a ui-sref="home">Home</a>
+		<a ui-sref="bracelets" ng-click="getBracelets()">Bracelets</a>
+		<a ui-sref="necklaces" ng-click="getNecklaces()">Necklaces</a>
+		<a ui-sref="headbands" ng-click="getHeadbands()">Headbands</a>
+		<a>Login</a>
+		<a ui-sref="cart"><img class="cart" src="./images/cart.png"></a>
+	</header>
+
+<ui-view></ui-view> 
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+
+
+
+
+  
+<script src="/js/app.js"></script>
+<script src="/js/controllers/mainCtrl.js"></script>
+<script src="/js/controllers/braceletCtrl.js"></script>
+<script src="/js/controllers/checkoutCtrl.js"></script>
+<script src="/js/controllers/necklacesCtrl.js"></script>
+<script src="/js/controllers/headbandCtrl.js"></script>
+<script src="/js/controllers/cartCtrl.js"></script>
+<script src="/js/mainService.js"></script>
+</body>
+</html>
