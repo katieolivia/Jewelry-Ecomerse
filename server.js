@@ -11,7 +11,7 @@ app.use(express.static(__dirname + '/public'));
 
 var massive = require('massive');
 var config = require('./config.js');
-var connectionString = "postgres://postgres:" + config.password +"@localhost/JewelryProject";
+var connectionString = config.connectionString;
 
 
 app.use(session({
