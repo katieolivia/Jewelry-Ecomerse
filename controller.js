@@ -3,19 +3,16 @@ var db = app.get('db');
 
 module.exports = {
 	getBracelets: function(req, res) {
-		var db = app.get('db');
 		db.get_bracelets(function(err, bracelets){
 			res.send(bracelets);
 		})
 	},
 	getNecklaces: function(req, res) {
-		var db = app.get('db');
 		db.get_necklaces(function(err, necklaces){
 			res.send(necklaces);
 		})
 	},
 	getHeadbands: function(req, res) {
-		var db = app.get('db');
 		db.get_headbands(function(err, headbands){
 			res.send(headbands);
 		})
@@ -28,7 +25,7 @@ module.exports = {
 			req.session.cart.push(req.body);
 		} 
 		else {
-			var index = inCart(req.body.id, req.session.cart);
+			var index = inCart(req.body.name, req.session.cart);
 			console.log(typeof index)
 			if(typeof index === 'number') {
 				console.log(req.session.cart[index]);
@@ -65,14 +62,15 @@ module.exports = {
 			};
 		};	
 		res.send(cart);
+	},
+	addOrder: function(req, res) {
+
 	}
 }
 
-var inCart = function (id, arr) {
-	console.log(arr)
+var inCart = function (name, arr) {
 		for(var i = 0; i < arr.length; i++) {
-			console.log(id)
-			if(arr[i].id == id) {
+			if(arr[i].name == name) {
 				console.log('here')
 				return i;
 			}

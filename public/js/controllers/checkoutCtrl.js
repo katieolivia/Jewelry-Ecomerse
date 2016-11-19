@@ -5,6 +5,13 @@ angular.module('jewelry').controller('checkoutCtrl', function($scope, mainServic
 	$scope.cart = cart;
 	calculatePriceInfo();
 
+	// $scope.toggleSameAsShipping = function() {
+	// 	if ($scope.user.billingAddress === $scope.user.shippingAddress) {
+	// 		$scope.user.billingAddress = {};
+	// 	} else {
+	// 		$scope.user.billingAddress = $scope.user.shippingAddress
+	// 	}
+	// }
 
 
 
@@ -32,13 +39,33 @@ function calcSubTotal() {
 		calcTax();
 		calcTotal();
 
-	}
+	};
 
 
 
-	function checkout() {
-		console.log(222222222, cart);
-	}
+	$scope.checkout = function(user) {
+		var order = {};
+		order.customer = user;
+		order.prices = {
+			tax: $scope.tax,
+			subTotal: $scope.subTotal,
+			total: $scope.total
+		}
+		order.cart = cart;
+		console.log('this is the order', order);
+		addOrder(order);
+
+		
+	};
+
+
+
+	function addOrder (order) {
+
+		mainService.addOrder(order).then(function(response){
+			$state.go('payment');
+		})
+	};
 
 	
 })

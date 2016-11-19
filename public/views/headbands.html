@@ -5,7 +5,7 @@
 
 <div class="productBox" ng-repeat="headband in headbands">
 	<h3>{{headband.name}}</h3>
-	<img src="../images/{{headband.imageurl}}" class = "imageProductPage">
+	<img ng-src="../images/{{headband.imageurl}}" class = "imageProductPage">
 	<p>Price: ${{headband.price}}</p>
 
 	<button ng-click="addToCart(headband)">Buy</button>

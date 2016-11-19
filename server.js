@@ -28,10 +28,11 @@ var controller = require('./controller');
 
 
 
-var corsOptions = {
-    origin: 'http://localhost:8989'
-};
-app.use(cors(corsOptions));
+// var corsOptions = {
+//     origin: 'http://localhost:8989'
+// };
+
+// app.use(cors(corsOptions));
 
 
 app.get('/api/bracelets', controller.getBracelets);
@@ -41,11 +42,12 @@ app.post('/api/cart', controller.createCart);
 app.put('/api/cart/update', controller.addOne);
 app.get('/api/cart/display', controller.getCart);
 app.post('/api/cart/delete', controller.takeOne);
+app.post('/api/order', controller.addOrder);
 
 
 
 
-var port = 8989;
+var port = config.port;
 app.listen(port, function(){
   console.log("Successfully listening on", port)
 })

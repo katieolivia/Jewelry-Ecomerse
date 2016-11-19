@@ -5,7 +5,7 @@
 
 <div class="productBox" ng-repeat="bracelet in bracelets">
 	<h2>{{bracelet.name}}</h2>
-	<img src="../images/{{bracelet.imageurl}}" class = "imageProductPage">
+	<img ng-src="../images/{{bracelet.imageurl}}" class = "imageProductPage">
 	<p>Price: ${{bracelet.price}}</p>
 
 	<button ng-click="addToCart(bracelet)">Buy</button>

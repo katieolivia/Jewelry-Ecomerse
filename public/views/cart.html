@@ -18,7 +18,7 @@
 	<div class="item" ng-repeat="item in cart">
 		<div class="cartName">
 			<p>{{item.name}}</p>
-			<img src="../images/{{item.imageurl}}" class="imageCart">
+			<img ng-src="../images/{{item.imageurl}}" class="imageCart">
 		</div>
 		
 		<p>${{item.price}}</p>

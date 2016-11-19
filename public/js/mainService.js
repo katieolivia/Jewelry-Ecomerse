@@ -71,6 +71,16 @@ angular.module('jewelry').service('mainService', function($http) {
 		}).then(function(response) {
 			return response.data;
 		})
+	},
+
+	this.addOrder = function(order) {
+		return $http({
+			method: 'POST',
+			url:'/api/order',
+			data: order
+		}).then(function(response) {
+			return response.data;
+		})
 	}
 
 

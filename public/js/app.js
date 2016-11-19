@@ -43,6 +43,16 @@ angular.module('jewelry', ['ui.router'])
 				}
 			}
 		})
+		.state('orderConfirmation', {
+			url: '/orderConfirmation',
+			templateUrl: '../views/orderConfirmation.html',
+			controller: 'orderConfirmCtrl'
+		})
+		.state('payment', {
+			url: '/payment',
+			templateUrl: '../views/payment.html',
+			controller: 'paymentCtrl'
+		})
 
 
 
