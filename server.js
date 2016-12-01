@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.static(__dirname + '/public'));
 
 var massive = require('massive');
-var config = require('./config.js');
+// var config = require('./config.js');
 var connectionString = process.env.HEROKU_POSTGRESQL_COBALT_URL || config.connectionString;
 
 
@@ -47,7 +47,7 @@ app.post('/charge', function(req, res){
 
 
 app.use(session({
-	secret: config.sessionSecret,
+	secret: process.env.SESSION_SECRET || config.sessionSecret,
 	saveUninitialized: false,
 	resave: false
 }));
@@ -80,7 +80,7 @@ app.get('/api/order/display', controller.getOrder);
 
 
 
-var port = config.port;
+var port = 3000;
 app.listen(port, function(){
   console.log("Successfully listening on", port)
 })
