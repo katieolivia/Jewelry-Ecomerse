@@ -73,7 +73,7 @@ angular.module('jewelry').service('mainService', function($http) {
 		})
 	},
 
-	this.addOrder = function(order) {
+	this.createOrder = function(order) {
 		return $http({
 			method: 'POST',
 			url:'/api/order',
@@ -81,6 +81,17 @@ angular.module('jewelry').service('mainService', function($http) {
 		}).then(function(response) {
 			return response.data;
 		})
+	},
+
+	this.getOrder = function() {
+		return $http({
+			method: 'GET',
+			url: '/api/order/display'
+		}).then(function(response) {
+			return response.data
+		})
+
+
 	}
 
 

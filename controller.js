@@ -26,7 +26,6 @@ module.exports = {
 		} 
 		else {
 			var index = inCart(req.body.name, req.session.cart);
-			console.log(typeof index)
 			if(typeof index === 'number') {
 				console.log(req.session.cart[index]);
 					req.session.cart[index].quantity++;
@@ -45,7 +44,7 @@ module.exports = {
 	addOne: function(req, res) {
 		var cart = req.session.cart;
 		for(var i = 0; i < cart.length; i++) {
-			if( cart[i].id === req.body.id) {
+			if( cart[i].name === req.body.name) {
 				cart[i].quantity ++;
 			}
 		}
@@ -54,7 +53,7 @@ module.exports = {
 	takeOne: function(req, res) {
 		var cart = req.session.cart;
 		for(var i = 0; i < cart.length; i++) {
-			if(cart[i].id === req.body.id) {
+			if(cart[i].name === req.body.name) {
 				cart[i].quantity --;
 				if(cart[i].quantity === 0) {
 					cart.splice(i, i+1);
@@ -63,8 +62,14 @@ module.exports = {
 		};	
 		res.send(cart);
 	},
-	addOrder: function(req, res) {
+	createOrder: function(req, res) {
+		req.session.order = req.body;
+		res.send(req.session.order);
+	},
 
+	getOrder: function(req,res){
+		console.log('this is order on back', req.session.order);
+		res.send(req.session.order);
 	}
 }
 

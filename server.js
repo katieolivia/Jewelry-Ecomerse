@@ -11,7 +11,39 @@ app.use(express.static(__dirname + '/public'));
 
 var massive = require('massive');
 var config = require('./config.js');
-var connectionString = config.connectionString;
+var connectionString = process.env.HEROKU_POSTGRESQL_COBALT_URL || config.connectionString;
+
+
+
+
+var stripe = require('stripe')("sk_test_UZkqBkIphlq8nrvz39Hnp4vG"); //secretkey
+
+
+app.get('/paysuccess', function(req, res){
+	res.render('paysuccess', {
+
+	});
+});
+
+app.post('/charge', function(req, res){
+	var token = req.body.stripeToken;
+	var chargeAmount = req.body.chargeAmount;
+	var charge = stripe.charges.create({
+		amount: chargeAmount,
+		source: token
+	}, function(err, charge){
+		if(err & err.type === "StripeCardError"){
+			console.log("Your card was declined");
+		}
+	});
+	console.log("Your payment was successful");
+	res.redirect('/paysuccess');
+
+});
+
+
+
+
 
 
 app.use(session({
@@ -42,7 +74,8 @@ app.post('/api/cart', controller.createCart);
 app.put('/api/cart/update', controller.addOne);
 app.get('/api/cart/display', controller.getCart);
 app.post('/api/cart/delete', controller.takeOne);
-app.post('/api/order', controller.addOrder);
+app.post('/api/order', controller.createOrder);
+app.get('/api/order/display', controller.getOrder);
 
 
 

@@ -51,7 +51,12 @@ angular.module('jewelry', ['ui.router'])
 		.state('payment', {
 			url: '/payment',
 			templateUrl: '../views/payment.html',
-			controller: 'paymentCtrl'
+			controller: 'paymentCtrl',
+			resolve: {
+				order: function(mainService) {
+					return mainService.getOrder();
+				}
+			}
 		})
 
 

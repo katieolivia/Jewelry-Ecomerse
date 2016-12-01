@@ -42,6 +42,12 @@ function calcSubTotal() {
 	};
 
 
+	function addOrder(order) {
+		mainService.createOrder(order).then(function(response){
+			
+		})
+	}
+
 
 	$scope.checkout = function(user) {
 		var order = {};
@@ -52,20 +58,14 @@ function calcSubTotal() {
 			total: $scope.total
 		}
 		order.cart = cart;
-		console.log('this is the order', order);
 		addOrder(order);
+		$state.go('payment');
 
 		
 	};
 
 
 
-	function addOrder (order) {
-
-		mainService.addOrder(order).then(function(response){
-			$state.go('payment');
-		})
-	};
 
 	
 })

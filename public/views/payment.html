@@ -1,1 +1,62 @@
-Payment Page
+
+<div class="paymentContainer">
+
+    <div class="confirmInfo">
+        <h4>Shipping to:</h4>
+        <p>{{order.customer.firstName}} {{order.customer.lastName}}<br>
+        {{order.customer.shippingAddress.address}}<br>
+        {{order.customer.shippingAddress.city}}, {{order.customer.shippingAddress.state}}, {{order.customer.shippingAddress.zipcode}}</p>
+
+
+    </div>
+
+    <div class="orderSummary">
+        <h4>Order Summary</h4>
+    
+        <div class="item" ng-repeat="item in cart">
+            <div class="cartName">
+                <p>{{item.name}}</p>
+                <img ng-src="../images/{{item.imageurl}}" class="imageCart">
+            </div>
+        
+            <p>${{item.price}}</p>
+            <p> x {{item.quantity}}</p>
+            <p> = ${{item.price*item.quantity}}</p>
+        
+        </div>
+
+        <div class="paymentStuff">
+            <div class="priceInfo">
+                <p>Subtotal ${{order.prices.subTotal}}<br>
+                Tax  ${{order.prices.tax}}<br>
+                Shipping $4.99<br><br>
+                Total  ${{order.prices.total}}</p>
+            </div>
+
+            <form action="/charge/" method="POST" class="swipebutton">
+                submit
+                <script
+                    src="https://checkout.stripe.com/checkout.js"
+                    class="stripe-button"
+                    data-key="pk_test_D11WC3Nj09nD4Q7mmuvcuXAi"
+                    data-amount="{{order.prices.total}}"
+                    data-name="Jewelry"
+                    data-description="Widget"
+                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                    data-locale="auto">
+                </script>
+       
+            </form>
+        </div>
+   
+
+    </div>
+
+
+
+
+
+
+
+</div>
+
