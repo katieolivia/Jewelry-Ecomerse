@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var session = require('express-session');
+var port = process.env.PORT || 9003;
 
 
 var app = module.exports = express();
@@ -69,10 +70,6 @@ app.post('/api/cart/delete', controller.takeOne);
 app.post('/api/order', controller.createOrder);
 app.get('/api/order/display', controller.getOrder);
 
-
-
-
-var port = 3000;
 app.listen(port, function(){
   console.log("Successfully listening on", port)
 })
