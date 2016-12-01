@@ -11,13 +11,9 @@ app.use(express.static(__dirname + '/public'));
 
 var massive = require('massive');
 // var config = require('./config.js');
-var connectionString = process.env.HEROKU_POSTGRESQL_COBALT_URL || config.connectionString;
-
-
-
+var connectionString = process.env.HEROKU_POSTGRESQL_COBALT_URL;
 
 var stripe = require('stripe')("sk_test_UZkqBkIphlq8nrvz39Hnp4vG"); //secretkey
-
 
 app.get('/paysuccess', function(req, res){
 	res.render('paysuccess', {
@@ -41,13 +37,8 @@ app.post('/charge', function(req, res){
 
 });
 
-
-
-
-
-
 app.use(session({
-	secret: process.env.SESSION_SECRET || config.sessionSecret,
+	secret: process.env.SESSION_SECRET,
 	saveUninitialized: false,
 	resave: false
 }));
