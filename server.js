@@ -37,11 +37,12 @@ app.post('/charge', function(req, res){
 
 });
 
-// app.use(session({
-// 	secret: process.env.SESSION_SECRET,
-// 	saveUninitialized: false,
-// 	resave: false
-// }));
+app.use(session({
+	secret: process.env.SESSION_SECRET,
+	saveUninitialized: true,
+	resave: false,
+	cookie: { secure: true }
+}));
 
 
 var  massiveInstance = massive.connectSync({connectionString : connectionString})
