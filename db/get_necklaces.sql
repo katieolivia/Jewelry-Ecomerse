@@ -1,1 +1,1 @@
-SELECT id, name, price, imageurl, description FROM necklaces;
+SELECT id, name, price, imageurl FROM necklaces;

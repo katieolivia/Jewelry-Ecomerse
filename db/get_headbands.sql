@@ -1,1 +1,1 @@
-SELECT id, name, price, imageurl, description FROM headbands;
+SELECT id, name, price, imageurl FROM headbands;
