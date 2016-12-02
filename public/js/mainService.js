@@ -1,17 +1,17 @@
-angular.module('jewelry').service('mainService', function($https) {
+angular.module('jewelry').service('mainService', function($http) {
 
 	this.getBracelets = function() {
-		return $https({
+		return $http({
 			method: 'GET',
 			url: '/api/bracelets'
 		}).then(function(response) {
 			return response.data;
-			
+
 		})
 	},
 
 	this.getNecklaces = function() {
-		return $https({
+		return $http({
 			method: 'GET',
 			url: '/api/necklaces'
 		}).then(function(response) {
@@ -20,7 +20,7 @@ angular.module('jewelry').service('mainService', function($https) {
 		})
 	},
 	this.getHeadbands = function() {
-		return $https({
+		return $http({
 			method: 'GET',
 			url: '/api/headbands'
 		}).then(function(response) {
@@ -32,7 +32,7 @@ angular.module('jewelry').service('mainService', function($https) {
 	this.createCart = function(item) {
 		item.quantity = 1;
 		var serviceVariable = this;
-		return $https({
+		return $http({
 			method: 'POST',
 			url: '/api/cart',
 			data: item   //req.body
@@ -43,7 +43,7 @@ angular.module('jewelry').service('mainService', function($https) {
 	},
 
 	this.getCart = function() {
-		return $https({
+		return $http({
 			method: 'GET',
 			url: '/api/cart/display'
 		}).then(function(response) {
@@ -54,7 +54,7 @@ angular.module('jewelry').service('mainService', function($https) {
 	},
 
 	this.addOne = function(item) {
-		return $https({
+		return $http({
 			method: 'PUT',
 			url: '/api/cart/update',
 			data: item
@@ -64,7 +64,7 @@ angular.module('jewelry').service('mainService', function($https) {
 	},
 
 	this.takeOne = function(item) {
-		return $https({
+		return $http({
 			method: 'POST',
 			url:'/api/cart/delete',
 			data: item
@@ -74,7 +74,7 @@ angular.module('jewelry').service('mainService', function($https) {
 	},
 
 	this.createOrder = function(order) {
-		return $https({
+		return $http({
 			method: 'POST',
 			url:'/api/order',
 			data: order
@@ -84,7 +84,7 @@ angular.module('jewelry').service('mainService', function($https) {
 	},
 
 	this.getOrder = function() {
-		return $https({
+		return $http({
 			method: 'GET',
 			url: '/api/order/display'
 		}).then(function(response) {
