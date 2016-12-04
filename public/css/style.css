@@ -34,6 +34,7 @@ a {
 .containerProducts {
 	background-color: #c0c0c0;
 	color: #998100;
+	padding: 2% 10% 2% 2%;
 }
 
 .productBoxes {
@@ -47,7 +48,7 @@ a {
 }
 
 .productBox {
-	
+
 	width: 200px;
 	border-style: double;
 	border-color: #998100;
@@ -65,7 +66,7 @@ button {
 	color: #998100;
 	background-color: #FFE4B5;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-	
+
 
 }
 .imageProductPage {

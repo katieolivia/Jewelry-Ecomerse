@@ -1,11 +1,31 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-var session = require('express-session');
+var expressSession = require('express-session');
+var RedisStore = require('connect-redis')(expressSession);
 var port = process.env.PORT || 9003;
 
 
-var app = module.exports = express();
+//from heroku docs
+module.exports = function Sessions(url, secret) {
+  var store = new RedisStore({ url: url });
+  var session = expressSession({
+    secret: process.env.SESSION_SECRET,
+    store: store,
+    resave: true,
+    saveUninitialized: true
+  });
+
+  return session;
+};
+
+
+
+
+
+
+
+var app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname + '/public'));
@@ -38,12 +58,12 @@ app.post('/charge', function(req, res){
 
 });
 
-app.use(session({
-	secret: process.env.SESSION_SECRET,
-	saveUninitialized: true,
-	resave: false,
-	cookie: { secure: true }
-}));
+// app.use(session({
+// 	secret: process.env.SESSION_SECRET,
+// 	saveUninitialized: true,
+// 	resave: false,
+// 	cookie: { secure: true }
+// }));
 
 
 var  massiveInstance = massive.connectSync({connectionString : connectionString})
