@@ -1,8 +1,9 @@
 angular.module('jewelry').controller('cartCtrl', function($scope, mainService, cart){
 
 	$scope.shipping = 4.99;
-	
+
 	$scope.cart = cart;
+	console.log(cart);
 	calculatePriceInfo();
 
 	$scope.addOne = function(item) {
@@ -19,7 +20,7 @@ angular.module('jewelry').controller('cartCtrl', function($scope, mainService, c
 		})
 	};
 
-	function calcSubTotal() { 
+	function calcSubTotal() {
 		var total = 0;
 		for(var i = 0; i < $scope.cart.length; i++) {
 			total += $scope.cart[i].price * $scope.cart[i].quantity;
