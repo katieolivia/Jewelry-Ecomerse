@@ -2,11 +2,11 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var session = require('express-session');
-cookieParser = require('cookie-parser');
+// cookieParser = require('cookie-parser');
 
-var port = process.env.PORT || 9003;
-// var config = require('./config.js');
-// var port = config.port;
+// var port = process.env.PORT || 9003;
+var config = require('./config.js');
+var port = config.port;
 
 
 var app = module.exports = express();
@@ -19,8 +19,8 @@ app.use(express.static(__dirname + '/public'));
 var massive = require('massive');
 
 
-// var connectionString = config.connectionString;
-var connectionString = process.env.HEROKU_POSTGRESQL_COBALT_URL;
+var connectionString = config.connectionString;
+// var connectionString = process.env.HEROKU_POSTGRESQL_COBALT_URL;
 
 var stripe = require('stripe')("sk_test_UZkqBkIphlq8nrvz39Hnp4vG"); //secretkey
 
@@ -47,8 +47,8 @@ app.post('/charge', function(req, res){
 });
 
 app.use(session({
-	secret: process.env.SESSION_SECRET,
-	// secret: config.sessionSecret,
+	// secret: process.env.SESSION_SECRET,
+	secret: config.sessionSecret,
 	saveUninitialized: false,
 	resave: false,
 }));
