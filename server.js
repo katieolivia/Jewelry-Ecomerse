@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var session = require('express-session');
+cookieParser = require('cookie-parser'),
 var port = process.env.PORT || 9003;
 
 
@@ -9,6 +10,8 @@ var app = module.exports = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname + '/public'));
+
+
 
 var massive = require('massive');
 // var config = require('./config.js');
